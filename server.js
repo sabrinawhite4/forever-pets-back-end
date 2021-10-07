@@ -27,7 +27,7 @@ app.use(
   })
 );
 
-app.listen(4000, () => console.log(gradient.instagram('Server barking on 4000')));
+app.listen(process.env.PORT || 4000, () => console.log(gradient.instagram('Server barking on 4000')));
 
 // Animal endpoints
 app.get("/api/animals/available", ac.getAvailableAnimals);
