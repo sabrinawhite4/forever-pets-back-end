@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const gradient = require('gradient-string');
 const session = require('express-session');
+const { v4: uuidv4 } = require('uuid');
 const ac = require('./controllers/animalController.js');
 const uc = require('./controllers/userController.js');
 const sc = require('./controllers/shelterController.js');
@@ -20,6 +21,9 @@ app.use(cors());
 app.use(express.json());
 app.use(
   session({
+    genid: function (req) {
+      return uuidv4() 
+    },
     secret: "Puppies are life",
     resave: false,
     saveUninitialized: true,
